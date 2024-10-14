@@ -3,17 +3,6 @@
 @foreach (var type in Enum.GetValues<ChildType>())
 {
     <EventListenerGrandChild Type="type" />
-
-    @* <MudBlazor.MudExpansionPanels @key=type>
-        <MudBlazor.MudExpansionPanel Expanded="true">
-            <TitleContent>
-                @type
-            </TitleContent>
-            <ChildContent>
-                <EventListenerGrandChild Type="type" />
-            </ChildContent>
-        </MudBlazor.MudExpansionPanel>
-    </MudBlazor.MudExpansionPanels> *@
 }
 
 @code
