@@ -1,0 +1,27 @@
+﻿<p>Listener: @State.Value</p>
+
+@foreach (var type in Enum.GetValues<ChildType>())
+{
+    <EventListenerGrandChild Type="type" />
+
+    @* <MudBlazor.MudExpansionPanels @key=type>
+        <MudBlazor.MudExpansionPanel Expanded="true">
+            <TitleContent>
+                @type
+            </TitleContent>
+            <ChildContent>
+                <EventListenerGrandChild Type="type" />
+            </ChildContent>
+        </MudBlazor.MudExpansionPanel>
+    </MudBlazor.MudExpansionPanels> *@
+}
+
+@code
+{
+    [CascadingParameter] public GlobalState State { get; set; }
+
+    public Task ForceRefreshAsync()
+    {
+        return InvokeAsync(StateHasChanged);
+    }
+}

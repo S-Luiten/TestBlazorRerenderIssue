@@ -1,0 +1,8 @@
+﻿<p>Listener @Type: @State.Value</p>
+
+@code
+{
+    [CascadingParameter] public GlobalState State { get; set; }
+
+    [Parameter] public ChildType Type { get; set; }
+}

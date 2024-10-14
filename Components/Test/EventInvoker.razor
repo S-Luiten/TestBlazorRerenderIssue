@@ -1,0 +1,16 @@
+﻿<input type="number" value="@State.Value" @onchange=HandleStateChangedAsync />
+
+@code
+{
+    [CascadingParameter] public GlobalState State { get; set; }
+
+    [Parameter] public EventCallback StateChanged { get; set; }
+
+    private Task HandleStateChangedAsync(ChangeEventArgs e)
+    {
+        State.Value = Convert.ToInt32(e.Value);
+
+        return Task.CompletedTask;
+        //return StateChanged.InvokeAsync();
+    }
+}

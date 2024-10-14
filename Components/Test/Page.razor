@@ -1,0 +1,20 @@
+﻿<button type="button" @onclick=RefreshAsync>Refresh page</button>
+
+<EventInvoker StateChanged="() => {}" />
+<EventListener @ref=_listener />
+
+@code
+{
+    [CascadingParameter] public GlobalState State { get; set; }
+
+    private EventListener _listener;
+
+    private async Task RefreshAsync()
+    {
+        await Task.Delay(1000);
+
+        State.Value++;
+
+        _listener?.ForceRefreshAsync();
+    }
+}
